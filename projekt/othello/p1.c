@@ -1,4 +1,6 @@
-#include "def.h"
+#include "logika.h"
+#include "interfejs.h"
+#include "ruch.h"
 
 int main(void){
     plansza a;
