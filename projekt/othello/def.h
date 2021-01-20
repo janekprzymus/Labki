@@ -70,48 +70,22 @@ void wypisz(plansza *a)
     printf( "\n" );
 }
 
-void rezultat(plansza *a, int b, int c)
+void rezultat(int score)
 {    
 
-    if((b>c)||(c==0)){
+    if(score==100){
         printf("Biały wygrywa!\n");
-        exit(1);
+        exit(100);
     }
-    if((c>b)||(b==0)){
+    if(score==-100){
         printf("Czarny wygrywa!\n");
-        exit(2);
+        exit(-100);
     }
-    if(c==b){
+    if(score==0){
         printf("Remis!\n");
-        exit(3);
+        exit(0);
     }
 }
-/*
-int ocena(plansza *a, int stop)
-{
-    int i,j;
-    int czarnych=0, bialych=0, mozliwych=0;
-    for(i=0;i<n;i++)
-        for(j=0;j<n;j++)
-        {
-            if(a->pola[i][j]==biale)
-                bialych++;
-            if(a->pola[i][j]==czarne)
-                czarnych++;
-            if(a->pola[i][j]==mozliwe)
-                mozliwych++;
-        }
- 
-    if(czarnych+bialych == n*n || czarnych == 0 || bialych == 0 || mozliwych==0 || stop==1)
-    {
-        rezultat(a, bialych, czarnych);
-        return 0; //koniec gry
-    }
-    else{
-        return 1; //gramy dalej
-    }
- 
-}*/
 
 int ocena(plansza *a, int stop)
 {
@@ -130,7 +104,6 @@ int ocena(plansza *a, int stop)
  
     if(czarnych+bialych == n*n || czarnych == 0 || bialych == 0 || mozliwych==0 || stop==1)
     {
-        rezultat(a, bialych, czarnych);
         if(bialych>czarnych)
         {
             return 100; // bialy win
@@ -499,8 +472,7 @@ plansza * interface(plansza *b){
     printf("Wprowadź wykonywany ruch (w kolejnosci: wiersz 1-8, kolumna a-h; '99' aby zakończyć grę):\n");
     scanf("%d", &a->ruch_x);
     if(a->ruch_x==99){
-        ocena(a, 1);
-        exit(-99);
+        rezultat(ocena(a, 1));
     }
     a->ruch_x--;
     scanf("%s", &kolumna);

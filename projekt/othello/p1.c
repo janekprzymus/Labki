@@ -22,5 +22,6 @@ int main(void){
     c=ruch(interface(&c));
     wypisz(&c);
     } while(ocena(&c, 0)==1);
+    rezultat(ocena(&c, 0));
     return 0;
 }
