@@ -86,7 +86,7 @@ void rezultat(plansza *a, int b, int c)
         exit(3);
     }
 }
-
+/*
 int ocena(plansza *a, int stop)
 {
     int i,j;
@@ -106,6 +106,43 @@ int ocena(plansza *a, int stop)
     {
         rezultat(a, bialych, czarnych);
         return 0; //koniec gry
+    }
+    else{
+        return 1; //gramy dalej
+    }
+ 
+}*/
+
+int ocena(plansza *a, int stop)
+{
+    int i,j;
+    int czarnych=0, bialych=0, mozliwych=0;
+    for(i=0;i<n;i++)
+        for(j=0;j<n;j++)
+        {
+            if(a->pola[i][j]==biale)
+                bialych++;
+            if(a->pola[i][j]==czarne)
+                czarnych++;
+            if(a->pola[i][j]==mozliwe)
+                mozliwych++;
+        }
+ 
+    if(czarnych+bialych == n*n || czarnych == 0 || bialych == 0 || mozliwych==0 || stop==1)
+    {
+        rezultat(a, bialych, czarnych);
+        if(bialych>czarnych)
+        {
+            return 100; // bialy win
+        }
+        if(czarnych>bialych)
+        {
+            return -100; //czarny win
+        }
+        if(bialych==czarnych)
+        {
+            return 0; //remis
+        }
     }
     else{
         return 1; //gramy dalej
