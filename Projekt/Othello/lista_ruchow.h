@@ -13,7 +13,7 @@ typedef struct _listaruchow{
 void zniszczliste(listaruchow *l)
 {
     if (l && l->nast)
-        zniszczliste((listaruchow *)l->nast);
+        zniszczliste(l->nast);
     if (l)
         free(l);
 }
