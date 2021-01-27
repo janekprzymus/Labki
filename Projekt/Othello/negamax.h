@@ -39,7 +39,7 @@ plansza *negamax_ruch(plansza *b){
             a->ruch_y = l->ruch_y;
         }
     }
-    printf("Bot wykonuje ruch: x=%d, y=%c\n", a->ruch_x+1, nazwy_kolumn[a->ruch_y]);
+    printf("Bot wykonuje ruch: x: %d, y: %c\n", a->ruch_x+1, nazwy_kolumn[a->ruch_y]);
     return a;
 }
 

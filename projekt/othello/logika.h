@@ -9,8 +9,6 @@ void zmiana_gracza(plansza *a){
 
 listaruchow *mozliwosci(plansza *a, listaruchow *l)
 {
-    //plansza a;
-    //a=*b;
     int i,j,x,y;
     for(i=0;i<n;i++)
         for(j=0;j<n;j++){
