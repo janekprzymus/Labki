@@ -1,29 +1,32 @@
 #include "logika.h"
 #include "interfejs.h"
 #include "ruch.h"
+#include "negamax.h"
 
 int main(void){
     plansza a;
     start(&a);
     wypisz(&a);
-    plansza b;
+    listaruchow *l=NULL;
     printf("Ruchy bialego:\n");
     a.czyjruch=biale;
-    b=mozliwosci(&a);
-    wypisz(&b);
+    l=mozliwosci(&a, l);
+    wypisz(&a);
     printf("Ruchy czarnego:\n");
     zmiana_gracza(&a);
-    b=mozliwosci(&a);
-    wypisz(&b);
+    l=mozliwosci(&a, l);
+    wypisz(&a);
     printf("\n");
-    zmiana_gracza(&b);
-    plansza c=ruch(interface(&b));
-    wypisz(&c);
+    zmiana_gracza(&a);
     do{
-    zmiana_gracza(&c);
-    c=ruch(interface(&c));
-    wypisz(&c);
-    } while(ocena(&c, 0)==1);
-    rezultat(ocena(&c, 0));
+    a=ruch(interface(&a, l));
+    wypisz(&a);
+    zmiana_gracza(&a);
+    a=ruch(negamax_ruch(&a));
+    wypisz(&a);
+    zmiana_gracza(&a);
+    } while(ocena(&a, 0)==1);
+    rezultat(ocena(&a, 0));
+    zniszczliste(l);
     return 0;
 }

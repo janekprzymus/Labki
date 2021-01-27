@@ -3,8 +3,9 @@
 
 #include "ocena.h"
 #include "wizualizacja.h"
+#include "logika.h"
 
-plansza * interface(plansza *b){
+plansza * interface(plansza *b, listaruchow *l){
     char *czyj, kolumna;
     plansza *a=b;
     
@@ -13,7 +14,7 @@ plansza * interface(plansza *b){
     if(a->czyjruch==biale)
         czyj="biały";
     printf("Ruch wykonuje %s\n", czyj);
-    *a=mozliwosci(a);
+    l=mozliwosci(a, l);
     wypisz(a);
 
     do{
